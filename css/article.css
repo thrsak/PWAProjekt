@@ -1,25 +1,69 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+header .logo {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header .logo img {
+    width: 15%;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav ul a {
+    margin: 0 2%;
+}
+
+header nav ul a {
+    text-decoration: none;
+    color: black;
 }
 
 main {
     max-width: 70%;
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
-main h1 {
+main div h1 {
     width: 70%;
     margin: 10px auto;
 }
 
-main section {
-    width: 100%;
+main div img {
+    width: 90%;
     margin: 0 auto;
     font-size: 1.2em;
 }
 
+main section {
+    text-align: left;
+    width: 70%;
+    margin: 20px auto 0 auto;
+}
+
+main section span {
+    font-size: 1.2em;
+}
+
+main section p span {
+    font-style: italic;
+    font-size: 1em;
+}
 
 footer {
     width: 100%;

@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 header .logo {
@@ -22,8 +23,13 @@ header nav ul {
     align-items: center;
 }
 
-header nav ul li {
+header nav ul a {
     margin: 0 2%;
+}
+
+header nav ul a {
+    text-decoration: none;
+    color: black;
 }
 
 main {
@@ -52,12 +58,12 @@ main .news {
     text-align: center;
 }
 
-main .news article {
-    width: 30%;
+main .news section {
+    width: 100%;
     margin: auto 2%;
 }
 
-main .news article img {
+main .news img {
     width: 100%;
 }
 
@@ -66,18 +72,15 @@ footer {
     margin: 0 auto;
     background-color: rgb(226, 226, 226);
     padding: 35px 0;
-}
-
-footer section {
     margin-bottom: -20px;
     text-align: center;
 }
 
-footer section hr {
+footer hr {
     width: 50%;
     color: gray;
 }
 
-footer section span {
+footer span {
     color: gray;
 }
