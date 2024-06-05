@@ -1,0 +1,38 @@
+main {
+    max-width: 90%;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main section form {
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 20px;
+    background-color: rgb(224, 224, 224);
+    box-shadow: 10px 10px 20px grey;
+    width: 60%;
+    margin: 20px auto 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main section form div {
+    width: 70%;
+    margin: 0 auto;
+}
+
+main section form label {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 3%;
+}
+
+main section form input, textarea{
+    width: 80%;
+    margin: 10px auto;
+}
+
+main section form div textarea {
+    height: 250px;
+}

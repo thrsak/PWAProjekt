@@ -1,0 +1,23 @@
+@media (max-width: 1000px) and (min-width:660px) {
+    main {
+        max-width: 80%;
+    }
+
+    main div h1 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 660px) {
+    main {
+        max-width: 90%;
+    }
+    
+    main div h1 {
+        font-size: 1.5em;
+    }
+
+    main .news {
+        display: block;
+    }
+}
