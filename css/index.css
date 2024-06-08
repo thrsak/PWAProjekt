@@ -1,0 +1,35 @@
+main {
+    max-width: 80%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+main .title hr {
+    background-color: black;
+    height: 2px;
+    width: 8%;
+    margin: 5px 10px 0 25px;
+    float: left;
+}
+
+main h2 {
+    clear: left;
+    margin: 20px 2%;
+}
+
+main .news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main .news section {
+    width: 100%;
+    margin: auto 2%;
+}
+
+main .news img {
+    width: 100%;
+    border-radius: 15px;
+}

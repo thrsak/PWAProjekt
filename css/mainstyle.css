@@ -39,8 +39,6 @@ footer {
     padding: 35px 0;
     margin-bottom: -20px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
 }
 
 footer hr {
@@ -50,4 +48,11 @@ footer hr {
 
 footer span {
     color: gray;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: black;
 }
