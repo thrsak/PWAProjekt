@@ -32,27 +32,38 @@
     <main>
         <section>
             <h1>Unos novih vijesti</h1>
-            <form action="../php/skripta.php" method="post" enctype="multipart/form-data">
+            <form action="../php/skripta.php" method="post" enctype="multipart/form-data" id="unos">
                 <div>
                     <label for="NewsTitle">Naslov vijesti: </label><br>
                     <input type="text" name="NewsTitle" id="NewsTitle" placeholder="..." required><br>
+                    <span class="error-message" id="NewsTitleError"></span><br>
+
                     <label for="NewsInformation">Tekst vijesti: </label><br>
                     <textarea name="NewsInformation" placeholder="..." id="NewsInformation" required></textarea><br>
+                    <span class="error-message" id="NewsInformationError"></span><br>
+
                     <label for="arhiva">Arhiva?</label><br>
-                    <input type="checkbox" name="arhiva" id="arhiva"><br>   
+                    <input type="checkbox" name="arhiva" id="arhiva"><br>
+   
                     <label for="kategorija">Kategorija: </label>
                     <select name="kategorija" id="kategorija">
+                        <option value=""></option>
                         <option value="sport">Sport</option>
                         <option value="zabava">Zabava</option>
                         <option value="politika">Politika</option>
                         <option value="kultura">Kultura</option>
                     </select><br>   
+                    <span class="error-message" id="kategorijaError"></span><br>
+
                     <label for="NewsPicture">Prikvaci sliku: </label><br>
                     <input type="file" name="NewsPicture" id="NewsPicture" required><br>
+                    <span class="error-message" id="NewsPictureError"></span><br>
+
                     <input type="submit" value="Unesi"><br>
                 </div>
             </form>
         </section>
+        <script src="./provjera.js"></script>
     </main>
     <footer>
         <hr>

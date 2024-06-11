@@ -15,6 +15,8 @@ main section form {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 main section form div {
@@ -26,13 +28,64 @@ main section form label {
     font-weight: bold;
     font-size: 1.2em;
     margin-left: 3%;
+    display: block;
+    margin-top: 20px;
+    text-align: left;
 }
 
-main section form input, textarea{
-    width: 80%;
+main section form input, 
+main section form textarea, 
+main section form select {
+    width: 90%;
     margin: 10px auto;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+main section form input[type="file"] {
+    padding: 3px;
+}
+
+main section form input:focus, 
+main section form textarea:focus, 
+main section form select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
 main section form div textarea {
-    height: 250px;
+    height: 150px;
+    resize: vertical;
+}
+
+main section form input[type="submit"] {
+    width: 95%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+main section form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
 }

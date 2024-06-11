@@ -33,11 +33,11 @@
         <nav>
             <ul>
                 <li><a href="../index.php">HOME</a></li>
-                <li><a href="../kategorija.php?kategorija=zabava">AMUSANT</a></li>
-                <li><a href="../kategorija.php?kategorija=sport">SPORT</a></li>
-                <li><a href="../kategorija.php?kategorija=politika">POLITIQUE</a></li>
-                <li><a href="../kategorija.php?kategorija=kultura">CULTURE</a></li>
-                <li><a href="../admin/administracija.php">ADMIN</a></li>
+                <li><a href="../kategorije/kategorija.php?kategorija=zabava">AMUSANT</a></li>
+                <li><a href="../kategorije/kategorija.php?kategorija=sport">SPORT</a></li>
+                <li><a href="../kategorije/kategorija.php?kategorija=politika">POLITIQUE</a></li>
+                <li><a href="../kategorije/kategorija.php?kategorija=kultura">CULTURE</a></li>
+                <li><a href="../kategorije/admin/administracija.php">ADMIN</a></li>
                 <li><a href="../func/unos.html">UNOS</a></li>
             </ul>
         </nav>
