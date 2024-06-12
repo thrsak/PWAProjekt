@@ -1,10 +1,48 @@
 <?php
+    session_start();
+
     $connection = mysqli_connect('localhost', 'root', '', 'leparisien');
 
     if(!$connection) die("Dogodila se greška pri spajanju na bazu...");
 
+    if(isset($_GET['odjava'])) {
+        session_unset();
+        session_destroy();
+        header("Location: http://localhost/Website/autentifikacija/login.html", true, 302);
+        exit();
+    }
+
+    if(isset($_GET['korisnik'])) {
+
+        if($_SESSION['username'] !== "") $prijava = true;
+
+        $korisnik_aut = $_GET['korisnik'];
+
+        $sql1 = "SELECT username, `admin` FROM korisnik WHERE korisnik.autentifikacija = '$korisnik_aut'";
+        $result1 = $connection->query($sql1);
+
+        if($result1->num_rows > 0) {
+            while($row = $result1->fetch_assoc()) {
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['admin'] = $row['admin'];
+
+                $admin = $row['admin'];
+            }
+
+            $prijava = true;
+        }
+    } else {
+        if(isset($_SESSION['username'])) {
+            $prijava = true;
+            $admin = $_SESSION['admin'];
+        } else {
+            $prijava = false;
+            $admin = '0';
+        }
+    }
+
     $sql = "SELECT * FROM vijesti
-            JOIN slike s ON s.id_slike = vijesti.slika_id;";
+            JOIN slike s ON s.id_slike = vijesti.slika_id";
     $result = $connection->query($sql);
 
     $counterZ = 0;
@@ -43,9 +81,23 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="./images/download.png" alt="">
+        <div class="maxWidth">
+            <div class="logo">
+                <img src="./images/download.png" alt="">
+            </div>
+            <?php if(!$prijava) { ?>
+            <div class="autent">
+                <a href="./autentifikacija/login.html">LOGIN</a>
+                <a href="./autentifikacija/registracija.html">REGISTRACIJA</a>
+            </div>
+            <?php } else { ?>
+            <div class="prijava">
+                <h4>Dobrodosli <?php echo $_SESSION['username']; ?>!</h4>
+                <a href="http://localhost/Website/index.php?odjava=1">Odjava</a>
+            </div>
+            <?php } ?>
         </div>
+        <div class="clear"></div>
         <hr>
         <nav>
             <ul>
@@ -54,8 +106,8 @@
                 <li><a href="./kategorije/kategorija.php?kategorija=sport">SPORT</a></li>
                 <li><a href="./kategorije/kategorija.php?kategorija=politika">POLITIQUE</a></li>
                 <li><a href="./kategorije/kategorija.php?kategorija=kultura">CULTURE</a></li>
-                <li><a href="./admin/administracija.php">ADMIN</a></li>
-                <li><a href="./func/unos.html">UNOS</a></li>
+                <?php if($admin === '1') { ?><li><a href="./admin/administracija.php">ADMIN</a></li><?php } ?>
+                <?php if($admin === '1') { ?><li><a href="./func/unos.html">UNOS</a></li><?php } ?>
             </ul>
         </nav>
     </header>

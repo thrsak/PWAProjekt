@@ -1,7 +1,12 @@
 <?php
+    session_start();    
+
     $connection = mysqli_connect('localhost', 'root', '', 'leparisien');
 
     if(!$connection) die('Prilikom spajanja na bazu nesto je poslo po zlu, probajte ponovno kasnije...');
+
+    $prijavljen = false;
+    if($_SESSION['username'] !== null) $prijavljen = true;
 
     if(isset($_GET['clanak'])) $clanak_id = $_GET['clanak'];
 
@@ -26,8 +31,22 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="../images/download.png" alt="">
+        <div class="maxWidth">
+            <div class="logo">
+                <img src="../images/download.png" alt="">
+            </div>
+            <?php if(!$prijavljen) { ?>
+            <div class="autent">
+                <a href="./autentifikacija/login.html">LOGIN</a>
+                <a href="./autentifikacija/registracija.html">REGISTRACIJA</a>
+            </div>
+            <?php } else { ?>
+            <div class="prijava">
+                <h4>Dobrodosli <?php echo $_SESSION['username']; ?>!</h4>
+                <a href="http://localhost/Website/index.php?odjava=1">Odjava</a>
+            </div>
+            <?php } ?>
+            <div class="clear"></div>
         </div>
         <hr>
         <nav>

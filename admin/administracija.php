@@ -1,7 +1,11 @@
 <?php
+    session_start();
     $connection = mysqli_connect('localhost', 'root', '', 'leparisien');
 
     if(!$connection) die("Nešto je pošlo po zlu pri spajanju na bazu...");
+
+    $prijavljen = false;
+    if($_SESSION['username'] !== null) $prijavljen = true;
 
     $sql = "SELECT * FROM vijesti
             JOIN slike s ON s.id_slike = vijesti.slika_id;";

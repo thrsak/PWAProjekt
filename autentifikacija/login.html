@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mainstyle.css">
+    <link rel="stylesheet" href="../css/unos.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>LeParisien - Unos</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/download.png" alt="">
+        </div>
+        <hr>
+    </header>
+    <main>
+        <section>
+            <h1>Prijava</h1>
+            <form action="./login.php" method="post" enctype="multipart/form-data" id="unos">
+                <div>
+                    <label for="username">Unesite Korisnicko Ime: </label><br>
+                    <input type="text" name="username" id="username" placeholder="..." required><br>
+                    <span class="error-message" id="usernameError"></span><br>
+
+                    <label for="password">Unesite Lozinku: </label><br>
+                    <input type="password" name="password" id="password"><br>
+                    <span class="error-message" id="passwordError"></span><br>
+
+                    <input type="submit" value="Unesi"><br>
+                    <a href="./registracija.html"><i>Nemate račun?</i></a>
+                </div>
+            </form>
+        </section>
+        <script src="./provjeraLogin.js"></script>
+    </main>
+    <footer>
+        <hr>
+        <span>&copy; Le Parisien</span>
+    </footer>
+</body>
+</html>

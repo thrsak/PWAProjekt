@@ -1,7 +1,16 @@
 body {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
     padding: 0;
     margin: 0;
     font-family: "Roboto Condensed", sans-serif;
+}
+
+header {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 header .logo {
@@ -14,6 +23,24 @@ header .logo {
 
 header .logo img {
     width: 15%;
+}
+
+.autent a {
+    width: 10%;
+    float: right;
+}
+
+.prijava {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 25%;
+}
+
+.prijava h4 {
+    margin-right: 2%;
 }
 
 header nav ul {
@@ -50,9 +77,18 @@ footer span {
     color: gray;
 }
 
-
-
 a {
     text-decoration: none;
     color: black;
+}
+
+.clear {
+    float: none;
+    clear: both;
+}
+
+.maxWidth {
+    max-width: 80%;
+    width: 100%;
+    margin: 0 auto;
 }

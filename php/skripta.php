@@ -6,6 +6,9 @@
 
     if(!$connection) die("There has been a problem while connecting to the database: " . mysqli_connect_error());
 
+    $prijavljen = false;
+    if($_SESSION['admin'] !== null) $prijavljen = true;
+
     $naslov = mysqli_real_escape_string($connection, $_POST['NewsTitle']);
     $tekst = mysqli_real_escape_string($connection, $_POST['NewsInformation']);
     $kategorija = mysqli_real_escape_string($connection, $_POST['kategorija']);
@@ -50,6 +53,22 @@
 </head>
 <body>
     <header>
+        <div class="maxWidth">
+            <div class="logo">
+                <img src="./images/download.png" alt="">
+            </div>
+            <?php if(!$prijavljen) { ?>
+            <div class="autent">
+                <a href="./autentifikacija/login.html">LOGIN</a>
+                <a href="./autentifikacija/registracija.html">REGISTRACIJA</a>
+            </div>
+            <?php } else { ?>
+            <div class="prijava">
+                <h4>Dobrodosli <?php echo $_SESSION['username']; ?>!</h4>
+                <a href="http://localhost/Website/index.php?odjava=1">Odjava</a>
+            </div>
+            <?php } ?>
+        </div>
         <div class='logo'>
             <img src='../images/download.png' alt=''>
         </div>
