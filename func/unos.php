@@ -36,7 +36,7 @@
     <header>
         <div class="maxWidth">
             <div class="logo">
-                <img src="./images/download.png" alt="">
+                <img src="../images/download.png" alt="">
             </div>
             <?php if($prijava) { ?>
             <div class="prijava">

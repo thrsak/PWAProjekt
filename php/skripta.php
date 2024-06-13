@@ -7,7 +7,7 @@
     if(!$connection) die("There has been a problem while connecting to the database: " . mysqli_connect_error());
 
     $prijavljen = false;
-    if($_SESSION['admin'] !== null) $prijavljen = true;
+    if(isset($_SESSION['admin'])) $prijavljen = true;
 
     $naslov = mysqli_real_escape_string($connection, $_POST['NewsTitle']);
     $tekst = mysqli_real_escape_string($connection, $_POST['NewsInformation']);
@@ -28,14 +28,45 @@
         if(!(move_uploaded_file($_FILES['NewsPicture']['tmp_name'], $dstFile))) echo "Dogodila se greška pri prijenosu slike...";
     }
 
+    // $filePath = $connection->real_escape_string($dstDir);
+    // $sql = "INSERT INTO slike(naziv, putanja) VALUES ('$dat', '$filePath');";
+    // $sql .= "INSERT INTO vijesti (naslov, tekst, slika_id, arhiva, kategorija) VALUES ('$naslov', '$tekst',
+    //         (SELECT id_slike FROM slike WHERE slike.naziv = '$dat'), '$arhiva', '$kategorija');";     
+
+    // if($connection->multi_query($sql) === FALSE) echo "Error: " . $sql . "<br>" . $connection->error;
+
+        // Escape the file path
     $filePath = $connection->real_escape_string($dstDir);
-    $sql = "INSERT INTO slike(naziv, putanja) VALUES ('$dat', '$filePath');";
-    $sql .= "INSERT INTO vijesti (naslov, tekst, slika_id, arhiva, kategorija) VALUES ('$naslov', '$tekst',
-            (SELECT id_slike FROM slike WHERE slike.naziv = '$dat'), '$arhiva', '$kategorija');";     
 
-    if($connection->multi_query($sql) === FALSE) echo "Error: " . $sql . "<br>" . $connection->error;
+    // Prepare and execute the first INSERT statement
+    $sql1 = "INSERT INTO slike (naziv, putanja) VALUES (?, ?)";
+    $stmt1 = $connection->prepare($sql1);
+    $stmt1->bind_param('ss', $dat, $filePath);
 
-    mysqli_close($connection);
+    if ($stmt1->execute() === FALSE) {
+        echo "Error: " . $sql1 . "<br>" . $connection->error;
+        exit;
+    }
+
+    // Retrieve the id of the inserted image
+    $slika_id = $connection->insert_id;
+
+    // Prepare and execute the second INSERT statement
+    $sql2 = "INSERT INTO vijesti (naslov, tekst, slika_id, arhiva, kategorija) VALUES (?, ?, ?, ?, ?)";
+    $stmt2 = $connection->prepare($sql2);
+    $stmt2->bind_param('ssiss', $naslov, $tekst, $slika_id, $arhiva, $kategorija);
+
+    if ($stmt2->execute() === FALSE) {
+        echo "Error: " . $sql2 . "<br>" . $connection->error;
+        exit;
+    }
+
+    // Close the statements
+    $stmt1->close();
+    $stmt2->close();
+
+    // Close the connection
+    $connection->close();
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +112,7 @@
                 <li><a href="../kategorije/kategorija.php?kategorija=politika">POLITIQUE</a></li>
                 <li><a href="../kategorije/kategorija.php?kategorija=kultura">CULTURE</a></li>
                 <li><a href="../admin/administracija.php">ADMIN</a></li>
-                <li><a href="../func/unos.html">UNOS</a></li>
+                <li><a href="../func/unos.php">UNOS</a></li>
             </ul>
         </nav>
     </header>

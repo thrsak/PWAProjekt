@@ -15,9 +15,11 @@
 
     $autentifikacija = bin2hex(random_bytes(16/2));
 
-    $sql = "INSERT INTO korisnik (username, `password`, `admin`, autentifikacija) VALUES ('$username', '$password', $admin, '$autentifikacija');";
+    $sql = "INSERT INTO korisnik (username, `password`, `admin`, autentifikacija) VALUES ('$username', '$password', '$admin', '$autentifikacija');";
 
-    $result = $connection->query($sql);
+    $result = $connection->prepare($sql);
+    $result->execute();
+    $result->store_result();
 
     if(!$result) {
         die("Registracija nije uspjesno prosla...");

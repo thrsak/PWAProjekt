@@ -107,7 +107,7 @@
                 <li><a href="./kategorije/kategorija.php?kategorija=politika">POLITIQUE</a></li>
                 <li><a href="./kategorije/kategorija.php?kategorija=kultura">CULTURE</a></li>
                 <?php if($admin === '1') { ?><li><a href="./admin/administracija.php">ADMIN</a></li><?php } ?>
-                <?php if($admin === '1') { ?><li><a href="./func/unos.html">UNOS</a></li><?php } ?>
+                <?php if($admin === '1') { ?><li><a href="./func/unos.php">UNOS</a></li><?php } ?>
             </ul>
         </nav>
     </header>

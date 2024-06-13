@@ -6,7 +6,7 @@
     if(!$connection) die("Dogodila se greška pri spajanju na bazu...");
 
     $prijavljen = false;
-    if($_SESSION['username'] !== "") $prijavljen = true;
+    if(isset($_SESSION['username'])) $prijavljen = true;
 
     $sql = "SELECT * FROM vijesti
             JOIN slike s ON s.id_slike = vijesti.slika_id;";
@@ -37,8 +37,8 @@
             </div>
             <?php if(!$prijavljen) { ?>
             <div class="autent">
-                <a href="./autentifikacija/login.html">LOGIN</a>
-                <a href="./autentifikacija/registracija.html">REGISTRACIJA</a>
+                <a href="../autentifikacija/login.html">LOGIN</a>
+                <a href="../autentifikacija/registracija.html">REGISTRACIJA</a>
             </div>
             <?php } else { ?>
             <div class="prijava">
@@ -56,8 +56,10 @@
                 <li><a href="./kategorija.php?kategorija=sport">SPORT</a></li>
                 <li><a href="./kategorija.php?kategorija=politika">POLITIQUE</a></li>
                 <li><a href="./kategorija.php?kategorija=kultura">CULTURE</a></li>
-                <?php if($_SESSION['admin'] === '1') { ?><li><a href="../admin/administracija.php">ADMIN</a></li><?php } ?>
-                <?php if($_SESSION['admin'] === '1') { ?><li><a href="../func/unos.html">UNOS</a></li><?php }?>
+                <?php if($prijavljen) { ?>
+                    <?php if($_SESSION['admin'] === '1') { ?><li><a href="../admin/administracija.php">ADMIN</a></li><?php } ?>
+                    <?php if($_SESSION['admin'] === '1') { ?><li><a href="../func/unos.php">UNOS</a></li><?php }?>
+                <?php } ?>
             </ul>
         </nav>
     </header>
